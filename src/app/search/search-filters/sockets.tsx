@@ -203,6 +203,18 @@ const socketFilters: FilterDefinition[] = [
       },
   },
   {
+    keywords: 'artifactmodded',
+    description: tl('Filter.ArtifactModded'),
+    destinyVersion: 2,
+    filter: () => (item: DimItem) =>
+      item.sockets?.allSockets.some((socket) =>
+        Boolean(
+          socket.plugged?.plugDef?.itemCategoryHashes?.includes(ItemCategoryHashes.ArmorMods) &&
+            socket.plugged.plugDef.inventory?.tierType === 5
+        )
+      ),
+  },
+  {
     keywords: 'deepsight',
     description: tl('Filter.Deepsight'),
     format: ['simple', 'query'],
